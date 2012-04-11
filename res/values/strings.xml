@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, EasyCatWhistle!</string>
+	<string name="app_name">Super Whistle</string>
+
+
+	<string-array name="species">
+		<item>Insects</item>
+		<item>Mosquito Repellent</item>
+		<item>Cats</item>
+		<item>Dogs</item>
+		<item>Bats</item>
+		<item>Ferrets</item>
+		<item>Cows</item>
+		<item>Chickens</item>
+		<item>ChinChillas</item>
+		<item>Fish</item>
+		<item>Snakes</item>
+		<item>Frogs</item>
+		<item>Owls</item>
+		<item>Hamsters</item>
+		<item>Gerbils</item>
+		<item>Horses</item>
+		<item>Donkeys</item>
+		<item>Mice</item>
+		<item>Rats</item>
+		<item>Rabbits</item>
+		<item>Hedgehogs</item>
+		<item>Raccoon</item>
+		<item>Opossum</item>
+		<item>Reptiles</item>
+		<item>Sheep</item>
+		<item>Whales</item>
+		<item>Porpoise/Dolphin</item>
+	</string-array>
+
+
+
+</resources>
