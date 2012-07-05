@@ -1,5 +1,7 @@
 package com.hunterdavis.superwhistle;
 
+import com.hunterdavis.easyaudiomanager.EasyAudioManager;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -16,7 +18,7 @@ import android.widget.Spinner;
 public class SuperWhistle extends Activity {
 
 	// global audio device for pause
-	AndroidAudioDevice device;
+	EasyAudioManager audioManager; 
 	float currentFrequency;
 	Button pauseButton = null;
 	int currentDuration = 3;
@@ -26,8 +28,9 @@ public class SuperWhistle extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
-		device = null;
+		
+		// create the audioManager
+		audioManager = new EasyAudioManager(this);
 
 		// listener for frequency button
 		OnClickListener dogOneListener = new OnClickListener() {
@@ -42,18 +45,16 @@ public class SuperWhistle extends Activity {
 						// TODO Auto-generated catch block
 						localFreqValue = 28000;
 					}
-					playFrequency(v.getContext(), localFreqValue);
+					audioManager.playFrequency(localFreqValue, currentDuration);
 				}
 
 			}
 		};
 
-		// listener for puase button
+		// listener for stop button
 		OnClickListener pauseButtonListener = new OnClickListener() {
 			public void onClick(View v) {
-				if (device != null) {
-					device.stop();
-				}
+				audioManager.stopPlayingFrequency();
 			}
 		};
 
@@ -63,7 +64,7 @@ public class SuperWhistle extends Activity {
 
 		pauseButton = (Button) findViewById(R.id.pause);
 		pauseButton.setOnClickListener(pauseButtonListener);
-		pauseButton.setEnabled(false);
+		pauseButton.setEnabled(true);
 
 		// set up our three spinners
 
@@ -95,7 +96,6 @@ public class SuperWhistle extends Activity {
 	}
 	
 	public void switchAnimal(Context context, int position) {
-		int localFreq = 28000;
 		switch (position) {
 		case 0:
 			setAnimalText(context, 66000);
@@ -182,54 +182,4 @@ public class SuperWhistle extends Activity {
 			break;
 		}
 	}
-
-	public void playFrequency(Context context, float frequency) {
-
-		currentFrequency = frequency;
-		pauseButton.setEnabled(true);
-
-		EditText durationText = (EditText) findViewById(R.id.duration);
-		int tempDuration = 0;
-
-		try {
-			tempDuration = Integer.valueOf(durationText.getText().toString()
-					.trim());
-		} catch (NumberFormatException e) {
-			tempDuration = 3;
-		}
-
-		currentDuration = tempDuration;
-
-		new Thread(new Runnable() {
-			public void run() {
-				// final float frequency2 = 440;
-				float increment = (float) (2 * Math.PI) * currentFrequency
-						/ 44100; // angular
-				// increment
-				// for
-				// each
-				// sample
-				float angle = 0;
-				device = new AndroidAudioDevice();
-				float samples[] = new float[1024];
-
-				for (int j = 0; j < (currentDuration * 40); j++) {
-					for (int i = 0; i < samples.length; i++) {
-						samples[i] = (float) Math.sin(angle);
-						angle += increment;
-					}
-
-					device.writeSamples(samples);
-
-				}
-				pauseButton.post(new Runnable() {
-					public void run() {
-						pauseButton.setEnabled(false);
-					}
-				});
-			}
-		}).start();
-
-	}
-
 }
