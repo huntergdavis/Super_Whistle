@@ -1,37 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-	<TableRow android:gravity="center" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:id="@+id/whistletable">
+    <TableRow
+        android:id="@+id/whistletable"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
 
-		<ImageButton android:id="@+id/whistle"
-			android:layout_height="wrap_content" android:layout_width="wrap_content"
-			android:src="@drawable/whistle" android:background="@android:color/black"/>
-	</TableRow>
-	<Button android:id="@+id/pause" android:layout_height="wrap_content"
-		android:layout_width="fill_parent" android:text="STOP" />
-	<Spinner android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:id="@+id/animalspin" />
-	<TableRow android:layout_alignParentBottom="true"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:id="@+id/frequencytable">
-		<TextView android:text="Current Frequency" android:id="@+id/belowtext"
-			android:layout_weight="1" android:layout_width="fill_parent"
-			android:layout_height="wrap_content"></TextView>
-		<EditText android:layout_width="fill_parent" android:id="@+id/freqbonus"
-			android:layout_weight="1" android:text="23000" android:numeric="decimal"
-			android:layout_height="wrap_content"></EditText>
-	</TableRow>
-	<TableRow android:layout_alignParentBottom="true"
-		android:gravity="top" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:id="@+id/frequencytable">
-		<TextView android:text="Play Time (seconds)" android:id="@+id/belowertext"
-			android:layout_weight="1" android:layout_width="fill_parent"
-			android:layout_height="wrap_content"></TextView>
-		<EditText android:layout_width="fill_parent" android:id="@+id/duration"
-			android:layout_weight="1" android:text="3" android:numeric="integer"
-			android:layout_height="wrap_content"></EditText>
-	</TableRow>
+        <ImageButton
+            android:id="@+id/whistle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:src="@drawable/whistle" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/pause"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="STOP ALL WHISTLES" />
+
+    <Spinner
+        android:id="@+id/animalspin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TableRow
+        android:id="@+id/frequencytable"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <TextView
+            android:id="@+id/belowtext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Current Frequency" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/freqbonus"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:numeric="decimal"
+            android:text="23000" >
+        </EditText>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/frequencytable"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="top" >
+
+        <TextView
+            android:id="@+id/belowertext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Play Time (seconds)" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/duration"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:numeric="integer"
+            android:text="3" >
+        </EditText>
+    </TableRow>
+
 </LinearLayout>
